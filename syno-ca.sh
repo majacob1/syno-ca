@@ -27,6 +27,14 @@ if [[ -n "$CONFIG_FILE" && ! -f "$CONFIG_FILE" ]]; then
   exit 1
 fi
 
+#Export RANDFILE so OpenSSL uses that file
+export RANDFILE=/tmp/.rnd
+if [ ! -f "$RANDFILE" ]; then
+  head -c 512 /dev/urandom > "$RANDFILE"
+  chmod 600 "$RANDFILE"
+fi
+
+
 json() {
   jq -r "$1" "$CONFIG_FILE"
 }
