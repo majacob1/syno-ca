@@ -271,8 +271,8 @@ if [[ -n "$CONFIG_FILE" ]]; then
     SANLIST=$(json ".certificates[$i].sans[]?" | tr '\n' ' ')
     DAYS=$(json ".certificates[$i].days")
 
-    local CERT_DIR="${OUT_DIR}/${CN}"
-    local CRT="${CERT_DIR}/${CN}.crt"
+    CERT_DIR="${OUT_DIR}/${CN}"
+    CRT="${CERT_DIR}/${CN}.crt"
 
     if [[ -n "$RENEW_THRESHOLD_DAYS" ]]; then
       if needs_renewal "$CRT" "$RENEW_THRESHOLD_DAYS"; then
