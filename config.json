@@ -1,0 +1,26 @@
+{
+  "root_ca": {
+    "create_new": true,
+    "root_key": "ca/root.key",
+    "root_crt": "ca/root.crt",
+    "common_name": "My-Ed25519-Root"
+  },
+  "certificates": [
+    {
+      "cn": "nas.example.com",
+      "sans": ["nas.lan", "nas.local"],
+      "days": 825
+    },
+    {
+      "cn": "vpn.example.com",
+      "sans": ["vpn.lan"],
+      "days": 825
+    }
+  ],
+  "auto_renew": {
+    "enabled": true,
+    "renew_days_before_expiry": 30,
+    "cron_time": "0 3 * * *"
+  }
+}
+
